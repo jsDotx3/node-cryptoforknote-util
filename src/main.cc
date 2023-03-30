@@ -246,8 +246,7 @@ NAN_METHOD(construct_block_blob) { // (parentBlockTemplateBuffer, nonceBuffer, c
 NAN_METHOD(address_decode) {
     if (info.Length() < 1) return THROW_ERROR_EXCEPTION("You must provide one argument.");
 
-    v8::Isolate *isolate = v8::Isolate::GetCurrent();
-    Local<Object> target = info[0]->ToObject(isolate->GetCurrentContext()).ToLocalChecked();
+    Local<Object> target = info[0]->ToObject();
 
     if (!Buffer::HasInstance(target)) return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
     
@@ -277,8 +276,7 @@ NAN_METHOD(address_decode) {
 NAN_METHOD(address_decode_integrated) {
     if (info.Length() < 1) return THROW_ERROR_EXCEPTION("You must provide one argument.");
 
-    v8::Isolate *isolate = v8::Isolate::GetCurrent();
-    Local<Object> target = info[0]->ToObject(isolate->GetCurrentContext()).ToLocalChecked();
+    Local<Object> target = info[0]->ToObject();
 
     if (!Buffer::HasInstance(target)) return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
 
